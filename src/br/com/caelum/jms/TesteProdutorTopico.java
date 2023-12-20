@@ -16,7 +16,9 @@ public class TesteProdutorTopico {
         MessageProducer producer = session.createProducer(topico);
 
         for (int i = 0; i < 100; i++) {
-            TextMessage textMessage = session.createTextMessage("<pedido><id>" + i + "</id></pedido>");
+            TextMessage textMessage = session.createTextMessage("<pedido><id>" + i + "</id><e-book>true</e-book></pedido>");
+            System.out.println(textMessage.getText());
+           // textMessage.setBooleanProperty("ebook", Boolean.TRUE);
             producer.send(textMessage);
         }
 
