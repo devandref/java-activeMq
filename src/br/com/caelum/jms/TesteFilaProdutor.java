@@ -20,7 +20,8 @@ public class TesteFilaProdutor {
 
         MessageProducer messageProducer = session.createProducer(fila);
         for (int i = 0; i < 1000; i++) {
-            Message message = session.createTextMessage("<pedido><id>" + i + "</id></pedido>");
+            Message message = session.createTextMessage("<pedido><id>" + i +"</id><e-book>false</e-book></pedido>");
+            message.setBooleanProperty("ebook", Boolean.FALSE);
             messageProducer.send(message);
         }
         new Scanner(System.in).nextLine();
